@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather Dashboard</title>
+  <meta name="description" content="Live weather, hourly and 7-day forecasts for any city. Built with HTML, CSS and JavaScript.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9B%85%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-sky="clear-day" data-night="0">
+  <div class="page">
+    <header class="top">
+      <h1 class="brand">Weather</h1>
+
+      <form id="searchForm" class="search" role="search" autocomplete="off">
+        <label class="sr-only" for="q">Search for a city</label>
+        <input id="q" type="search" placeholder="Search for a city" aria-controls="suggest" aria-expanded="false">
+        <button type="submit" class="btn">Search</button>
+        <ul id="suggest" class="suggest" role="listbox" aria-label="City suggestions" hidden></ul>
+      </form>
+
+      <button id="locate" class="btn ghost" type="button">Use my location</button>
+
+      <div class="units" role="group" aria-label="Temperature unit">
+        <button type="button" data-unit="c" aria-pressed="true">°C</button>
+        <button type="button" data-unit="f" aria-pressed="false">°F</button>
+      </div>
+    </header>
+
+    <nav id="recent" class="recent" aria-label="Recent cities"></nav>
+    <p id="status" class="status" role="status" aria-live="polite">Loading forecast…</p>
+
+    <main id="app" hidden>
+      <section id="now" class="now" aria-labelledby="placeName"></section>
+
+      <section class="panel" aria-labelledby="hourlyTitle">
+        <h3 id="hourlyTitle">Next 24 hours</h3>
+        <ul id="hourly" class="hourly"></ul>
+      </section>
+
+      <div class="grid">
+        <section class="panel" aria-labelledby="dailyTitle">
+          <h3 id="dailyTitle">7-day forecast</h3>
+          <ul id="daily" class="daily"></ul>
+        </section>
+
+        <section class="panel" aria-labelledby="statsTitle">
+          <h3 id="statsTitle">Conditions right now</h3>
+          <dl id="stats" class="stats"></dl>
+        </section>
+      </div>
+    </main>
+
+    <footer class="foot">
+      Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
